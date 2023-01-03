@@ -1,0 +1,13 @@
+{
+  // デフォルトフォーマッターとして Prettier プラグインを利用
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // ファイル保存時にデフォルトフォーマッターでファイルをフォーマットする
+  "editor.formatOnSave": true,
+  // ファイル保存時のコードアクション設定
+  "editor.codeActionsOnSave": {
+    // ESLint プラグインでフォーマットする
+    "source.fixAll.eslint": true,
+    // Stylelint プラグインでフォーマットする
+    "source.fixAll.stylelint": true
+  }
+}
