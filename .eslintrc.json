@@ -88,6 +88,7 @@
       {
         "extensions": [".jsx", ".tsx"]
       }
-    ]
+    ],
+    "@typescript-eslint/triple-slash-reference": "off"
   }
 }
