@@ -27,12 +27,13 @@ export const createContact = async (): Promise<ProfileType> => {
   return contact
 }
 
-export const getContact = async (id: string): Promise<ProfileType | null> => {
+export const getContact = async (id: string): Promise<ProfileType> => {
   await fakeNetwork(`contact:${id}`)
   let contacts: ProfileType[] | null = await localforage.getItem('contacts')
   if (contacts == null) contacts = []
-  const contact: ProfileType | undefined = contacts.find((x) => x.id === id)
-  return contact ?? null
+  const contact = contacts.find((x) => x.id === id)
+  if (contact == null) throw new Error(`No contact found for ${id}`)
+  return contact
 }
 
 // eslint-disable-next-line max-len

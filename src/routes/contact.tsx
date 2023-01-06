@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import type { LoaderFunctionArgs } from 'react-router-dom'
 import { Form, useLoaderData } from 'react-router-dom'
 
 import Favorite from '../components/favorite'
@@ -7,9 +8,9 @@ import { getContact } from '../contacts'
 
 import type { ProfileType } from '../types'
 
-export const loader = async ({ params }: any): Promise<ProfileType | null> => {
-  console.log(params.contactId)
-  return await getContact(params.contactId)
+export const loader = async ({ params }: LoaderFunctionArgs): Promise<ProfileType> => {
+  const contactId = params.contactId ?? ''
+  return await getContact(contactId)
 }
 
 const Contact: FC = () => {
