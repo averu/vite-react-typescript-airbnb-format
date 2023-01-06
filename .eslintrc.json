@@ -89,6 +89,18 @@
         "extensions": [".jsx", ".tsx"]
       }
     ],
-    "@typescript-eslint/triple-slash-reference": "off"
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/strict-boolean-expressions": [
+      "error",
+      {
+        "allowString": true,
+        "allowNumber": false,
+        "allowNullableObject": true,
+        "allowNullableBoolean": false,
+        "allowNullableString": true,
+        "allowNullableNumber": false,
+        "allowAny": false
+      }
+    ]
   }
 }
