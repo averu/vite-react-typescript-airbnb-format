@@ -8,6 +8,8 @@ yarn
 yarn dev
 ```
 
-# 学習用の実装
+# 参考
 
-学習用に[React Router のチュートリアル](https://reactrouter.com/en/main/start/tutorial)を TypeScript に書き換えて実装
+[React Router チュートリアル](https://reactrouter.com/en/main/start/tutorial)
+
+[bulletproof-react](https://github.com/alan2207/bulletproof-react)
