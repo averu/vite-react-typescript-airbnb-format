@@ -1,12 +1,12 @@
 import type { FC } from 'react'
 
-import type { NameType } from '../types'
+import type { ProfileType } from '../types'
 
-const NameArea: FC<NameType> = ({ first, last }) => {
-  if (first ?? last) {
+const NameArea: FC<{ contact: ProfileType }> = ({ contact }) => {
+  if (contact.first ?? contact.last) {
     return (
       <>
-        {first} {last}
+        {contact.first} {contact.last}
       </>
     )
   }

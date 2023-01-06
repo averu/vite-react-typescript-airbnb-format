@@ -3,7 +3,7 @@ import type { LoaderFunctionArgs } from 'react-router-dom'
 import { Form, useLoaderData } from 'react-router-dom'
 
 import Favorite from '../components/favorite'
-import nameArea from '../components/nameArea'
+import NameArea from '../components/nameArea'
 import { getContact } from '../contacts'
 
 import type { ProfileType } from '../types'
@@ -25,7 +25,7 @@ const Contact: FC = () => {
       <div>
         <h1>
           <>
-            {nameArea({ first: contact.first, last: contact.last })}
+            <NameArea contact={contact} />
             <Favorite contact={contact} />
           </>
         </h1>

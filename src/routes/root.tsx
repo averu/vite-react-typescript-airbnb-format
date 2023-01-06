@@ -75,7 +75,7 @@ const Root: FC = () => {
                   to={`contacts/${contact.id}`}
                   className={({ isActive }) => (isActive ? 'active' : '')}
                 >
-                  <NameArea first={contact.first} last={contact.last} />
+                  <NameArea contact={contact} />
                 </NavLink>
               </li>
             ))}
