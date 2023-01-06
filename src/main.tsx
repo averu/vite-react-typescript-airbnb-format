@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import { action as favoriteAction } from './components/favorite'
 import Contact, { loader as contactLoader } from './routes/contact'
 import { action as destroyAction } from './routes/destroy'
 import EditContact, { action as editAction } from './routes/edit'
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
       {
         path: 'contacts/:contactId',
         element: <Contact />,
-        loader: contactLoader
+        loader: contactLoader,
+        action: favoriteAction
       },
       {
         path: 'contacts/:contactId/edit',

@@ -26,7 +26,7 @@ const Contact: FC = () => {
         <h1>
           <>
             {nameArea({ first: contact.first, last: contact.last })}
-            <Favorite favorite={contact.favorite} />
+            <Favorite contact={contact} />
           </>
         </h1>
 

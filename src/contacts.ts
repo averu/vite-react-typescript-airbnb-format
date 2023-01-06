@@ -39,7 +39,7 @@ export const getContact = async (id: string): Promise<ProfileType> => {
 // eslint-disable-next-line max-len
 export const updateContact = async (
   id: string,
-  updates: Record<string, FormDataEntryValue>
+  updates: Record<string, FormDataEntryValue | boolean>
 ): Promise<ProfileType> => {
   await fakeNetwork()
   let contacts: ProfileType[] | null = await localforage.getItem('contacts')
