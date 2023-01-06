@@ -35,6 +35,10 @@ const Root: FC = () => {
   const navigation = useNavigation()
   const submit = useSubmit()
 
+  const searching =
+    (navigation.location &&
+      new URLSearchParams(navigation.location.search).has('q')) ??
+    false
   return (
     <>
       <div id="sidebar">
@@ -43,6 +47,7 @@ const Root: FC = () => {
           <Form id="search-form" role="search">
             <input
               id="q"
+              className={searching ? 'loading' : ''}
               aria-label="Search contacts"
               placeholder="Search"
               type="search"
@@ -52,7 +57,7 @@ const Root: FC = () => {
                 submit(event.currentTarget.form)
               }}
             />
-            <div id="search-spinner" aria-hidden hidden />
+            <div id="search-spinner" aria-hidden hidden={!searching} />
             <div className="sr-only" aria-live="polite" />
           </Form>
           <Form method="post">
