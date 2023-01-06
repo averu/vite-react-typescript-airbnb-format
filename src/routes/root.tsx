@@ -6,7 +6,8 @@ import {
   useLoaderData,
   Form,
   redirect,
-  useNavigation
+  useNavigation,
+  useSubmit
 } from 'react-router-dom'
 
 import NameArea from '../components/nameArea'
@@ -32,6 +33,8 @@ export const loader = async ({
 const Root: FC = () => {
   const { contacts, q } = useLoaderData() as QueryType
   const navigation = useNavigation()
+  const submit = useSubmit()
+
   return (
     <>
       <div id="sidebar">
@@ -45,6 +48,9 @@ const Root: FC = () => {
               type="search"
               name="q"
               defaultValue={q}
+              onChange={(event) => {
+                submit(event.currentTarget.form)
+              }}
             />
             <div id="search-spinner" aria-hidden hidden />
             <div className="sr-only" aria-live="polite" />
