@@ -12,7 +12,7 @@ import {
 import NameArea from '../components/nameArea'
 import { getContacts, createContact } from '../contacts'
 
-import type { ProfileType } from '../types'
+import type { ProfileType, QueryType } from '../types'
 
 export const action = async (): Promise<Response> => {
   const contact: ProfileType = await createContact()
@@ -21,16 +21,16 @@ export const action = async (): Promise<Response> => {
 
 export const loader = async ({
   request
-}: LoaderFunctionArgs): Promise<ProfileType[]> => {
+}: LoaderFunctionArgs): Promise<QueryType> => {
   const url = new URL(request.url)
   let q = url.searchParams.get('q')
   if (q == null) q = ''
   const contacts: ProfileType[] = await getContacts(q)
-  return contacts
+  return { contacts, q }
 }
 
 const Root: FC = () => {
-  const contacts = useLoaderData() as ProfileType[]
+  const { contacts, q } = useLoaderData() as QueryType
   const navigation = useNavigation()
   return (
     <>
@@ -44,6 +44,7 @@ const Root: FC = () => {
               placeholder="Search"
               type="search"
               name="q"
+              defaultValue={q}
             />
             <div id="search-spinner" aria-hidden hidden />
             <div className="sr-only" aria-live="polite" />

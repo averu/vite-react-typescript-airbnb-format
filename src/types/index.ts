@@ -18,3 +18,8 @@ export interface ContactType {
 }
 
 export interface ProfileType extends idType, ContactType {}
+
+export interface QueryType {
+  contacts: ProfileType[]
+  q?: string
+}
