@@ -6,7 +6,10 @@ import { updateContact } from '../contacts'
 
 import type { ProfileType } from '../types'
 
-export const action = async ({ request, params }: ActionFunctionArgs): Promise<Response> => {
+export const action = async ({
+  request,
+  params
+}: ActionFunctionArgs): Promise<Response> => {
   const formData = await request.formData()
   const updates = Object.fromEntries(formData)
   const contactId = params.contactId ?? ''
@@ -22,12 +25,29 @@ const Edit: FC = () => {
     <Form method="post" id="contact-form">
       <p>
         <span>Name</span>
-        <input placeholder="First" aria-label="First name" type="text" name="first" defaultValue={contact.first} />
-        <input placeholder="Last" aria-label="Last name" type="text" name="last" defaultValue={contact.last} />
+        <input
+          placeholder="First"
+          aria-label="First name"
+          type="text"
+          name="first"
+          defaultValue={contact.first}
+        />
+        <input
+          placeholder="Last"
+          aria-label="Last name"
+          type="text"
+          name="last"
+          defaultValue={contact.last}
+        />
       </p>
       <label htmlFor="twitter">
         <span>Twitter</span>
-        <input type="text" name="twitter" placeholder="@jack" defaultValue={contact.twitter} />
+        <input
+          type="text"
+          name="twitter"
+          placeholder="@jack"
+          defaultValue={contact.twitter}
+        />
       </label>
       <label htmlFor="avator">
         <span>Avatar URL</span>

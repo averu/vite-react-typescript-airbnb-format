@@ -11,7 +11,9 @@ const Favorite = ({ favorite }: Props): JSX.Element => (
       type="button"
       name="favorite"
       value={favorite === true ? 'false' : 'true'}
-      aria-label={favorite === true ? 'Remove from favorites' : 'Add to favorites'}
+      aria-label={
+        favorite === true ? 'Remove from favorites' : 'Add to favorites'
+      }
     >
       {favorite === true ? '★' : '☆'}
     </button>

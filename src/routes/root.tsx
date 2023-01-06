@@ -1,5 +1,12 @@
 import type { FC } from 'react'
-import { Outlet, NavLink, useLoaderData, Form, redirect, useNavigation } from 'react-router-dom'
+import {
+  Outlet,
+  NavLink,
+  useLoaderData,
+  Form,
+  redirect,
+  useNavigation
+} from 'react-router-dom'
 
 import NameArea from '../components/nameArea'
 import { getContacts, createContact } from '../contacts'
@@ -25,7 +32,13 @@ const Root: FC = () => {
         <h1>React Router Contacts</h1>
         <div>
           <form id="search-form" role="search">
-            <input id="q" aria-label="Search contacts" placeholder="Search" type="search" name="q" />
+            <input
+              id="q"
+              aria-label="Search contacts"
+              placeholder="Search"
+              type="search"
+              name="q"
+            />
             <div id="search-spinner" aria-hidden hidden />
             <div className="sr-only" aria-live="polite" />
           </form>
@@ -37,7 +50,10 @@ const Root: FC = () => {
           <ul>
             {contacts.map((contact) => (
               <li key={contact.id}>
-                <NavLink to={`contacts/${contact.id}`} className={({ isActive }) => (isActive ? 'active' : '')}>
+                <NavLink
+                  to={`contacts/${contact.id}`}
+                  className={({ isActive }) => (isActive ? 'active' : '')}
+                >
                   <NameArea first={contact.first} last={contact.last} />
                 </NavLink>
               </li>
@@ -45,7 +61,10 @@ const Root: FC = () => {
           </ul>
         </nav>
       </div>
-      <div id="detail" className={navigation.state === 'loading' ? 'loading' : ''}>
+      <div
+        id="detail"
+        className={navigation.state === 'loading' ? 'loading' : ''}
+      >
         <Outlet />
       </div>
     </>

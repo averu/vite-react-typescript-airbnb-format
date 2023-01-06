@@ -8,7 +8,9 @@ import { getContact } from '../contacts'
 
 import type { ProfileType } from '../types'
 
-export const loader = async ({ params }: LoaderFunctionArgs): Promise<ProfileType> => {
+export const loader = async ({
+  params
+}: LoaderFunctionArgs): Promise<ProfileType> => {
   const contactId = params.contactId ?? ''
   return await getContact(contactId)
 }
@@ -30,7 +32,11 @@ const Contact: FC = () => {
 
         {contact.twitter && (
           <p>
-            <a target="_blank" href={`https://twitter.com/${contact.twitter}`} rel="noreferrer">
+            <a
+              target="_blank"
+              href={`https://twitter.com/${contact.twitter}`}
+              rel="noreferrer"
+            >
               {contact.twitter}
             </a>
           </p>
@@ -46,7 +52,11 @@ const Contact: FC = () => {
             method="post"
             action="destroy"
             onSubmit={(event) => {
-              if (!window.confirm('Please confirm you want to delete this record.')) {
+              if (
+                !window.confirm(
+                  'Please confirm you want to delete this record.'
+                )
+              ) {
                 event.preventDefault()
               }
             }}
