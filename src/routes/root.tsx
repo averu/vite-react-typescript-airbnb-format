@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import type { LoaderFunctionArgs } from 'react-router-dom'
 import {
   Outlet,
   NavLink,
@@ -18,8 +19,13 @@ export const action = async (): Promise<Response> => {
   return redirect(`/contacts/${contact.id}/edit`)
 }
 
-export const loader = async (): Promise<ProfileType[]> => {
-  const contacts: ProfileType[] = await getContacts()
+export const loader = async ({
+  request
+}: LoaderFunctionArgs): Promise<ProfileType[]> => {
+  const url = new URL(request.url)
+  let q = url.searchParams.get('q')
+  if (q == null) q = ''
+  const contacts: ProfileType[] = await getContacts(q)
   return contacts
 }
 
@@ -31,7 +37,7 @@ const Root: FC = () => {
       <div id="sidebar">
         <h1>React Router Contacts</h1>
         <div>
-          <form id="search-form" role="search">
+          <Form id="search-form" role="search">
             <input
               id="q"
               aria-label="Search contacts"
@@ -41,7 +47,7 @@ const Root: FC = () => {
             />
             <div id="search-spinner" aria-hidden hidden />
             <div className="sr-only" aria-live="polite" />
-          </form>
+          </Form>
           <Form method="post">
             <button type="submit">New</button>
           </Form>
