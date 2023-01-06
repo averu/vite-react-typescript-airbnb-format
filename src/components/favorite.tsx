@@ -23,7 +23,6 @@ const Favorite: FC<{ contact: ProfileType }> = ({ contact }) => {
   if (fetcher.formData) {
     favorite = fetcher.formData.get('favorite') === 'true'
   }
-  // console.log(favorite)
   return (
     <fetcher.Form method="post">
       <button
